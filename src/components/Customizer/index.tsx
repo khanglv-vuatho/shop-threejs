@@ -10,9 +10,23 @@ import { EditorTabs, DecalTypes, FilterTabs } from '@/config/constants'
 import { fadeAnimation, slideAnimation } from '@/config/motion'
 import Tab from '../Tab'
 import { CustomButton } from '../CustomButton'
+import { useState } from 'react'
 
 const Customizer = () => {
   const snap = useSnapshot(state)
+
+  const [file, setFile] = useState('')
+
+  const [prompt, setPrompt] = useState('')
+  const [generatingImg, setGeneratingImg] = useState(false)
+
+  const [activeEditorTab, setActiveEditorTab] = useState('')
+  const [activeFilterTab, setActiveFilterTab] = useState({
+    logoShirt: true,
+    stylishShirt: false,
+  })
+
+  const genderateTabcontent = () => {}
 
   return (
     <AnimatePresence>

@@ -5,7 +5,7 @@ export const EditorTabs = [
   },
   {
     name: 'filepicker',
-    icon: '/fileIcon.png',
+    icon: '/file.png',
   },
   {
     name: 'aipicker',
@@ -16,11 +16,11 @@ export const EditorTabs = [
 export const FilterTabs = [
   {
     name: 'logoShirt',
-    icon: '/logoShirt.png',
+    icon: '/logo-tshirt.png',
   },
   {
     name: 'stylishShirt',
-    icon: '/stylishShirt.png',
+    icon: '/stylish-tshirt.png',
   },
 ]
 
