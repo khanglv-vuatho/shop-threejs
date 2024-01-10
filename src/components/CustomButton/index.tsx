@@ -1,3 +1,4 @@
+'use client'
 import state from '@/storeValtio'
 import { Button } from '@nextui-org/react'
 import { twMerge } from 'tailwind-merge'
