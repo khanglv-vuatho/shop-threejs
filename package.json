@@ -14,6 +14,7 @@
     "@react-three/fiber": "^8.15.13",
     "axios": "^1.6.5",
     "framer-motion": "^10.17.12",
+    "imaginesdk": "^1.1.0",
     "maath": "^0.10.7",
     "next": "14.0.4",
     "react": "^18",

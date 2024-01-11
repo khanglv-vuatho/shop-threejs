@@ -1,27 +1,21 @@
 'use client'
 
-import { motion, AnimatePresence } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import { useSnapshot } from 'valtio'
 
-import config from '@/config/config'
-import state from '@/storeValtio'
-import { downloadCanvasToImage, reader } from '@/config/helpers'
-import { EditorTabs, DecalTypes, FilterTabs } from '@/config/constants'
+import { EditorTabs, FilterTabs } from '@/config/constants'
 import { fadeAnimation, slideAnimation } from '@/config/motion'
-import Tab from '../Tab'
-import { CustomButton } from '../CustomButton'
+import state from '@/storeValtio'
 import { useState } from 'react'
-import AIPicker from '../AIPicker'
-import FilePicker from '../FilePicker'
 import ColorPicker from '../ColorPicker'
+import { CustomButton } from '../CustomButton'
+import FilePicker from '../FilePicker'
+import Tab from '../Tab'
 
 const Customizer = () => {
   const snap = useSnapshot(state)
 
   const [file, setFile] = useState('')
-
-  const [prompt, setPrompt] = useState('')
-  const [generatingImg, setGeneratingImg] = useState(false)
 
   const [activeEditorTab, setActiveEditorTab] = useState('')
 
@@ -36,21 +30,10 @@ const Customizer = () => {
         return <ColorPicker />
       case 'filepicker':
         return <FilePicker file={file} setFile={setFile} />
-      case 'aipicker':
-        return <AIPicker />
       default:
         return null
     }
   }
-  // const handleDecals = (type: any, result: any) => {
-  //   const decalType = DecalTypes[type]
-
-  //   state[decalType.stateProperty] = result
-
-  //   if (!activeFilterTab[decalType.filterTab]) {
-  //     handleActiveFilterTab(decalType.filterTab)
-  //   }
-  // }
 
   const _handleActiveFilterTab = (tabName: string) => {
     switch (tabName) {

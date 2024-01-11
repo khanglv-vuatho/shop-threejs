@@ -6,6 +6,10 @@ const apiConfig = {
 
 const instance = axios.create({
   baseURL: apiConfig.baseUrl,
+  headers: {
+    'Content-Type': 'application/json',
+    Authorization: 'Bearer your_api_key_here', // Replace with your API key if needed
+  },
   timeout: 30000, // 30 seconds
 })
 
