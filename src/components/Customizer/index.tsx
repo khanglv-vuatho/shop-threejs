@@ -24,7 +24,8 @@ const Customizer = () => {
   const [generatingImg, setGeneratingImg] = useState(false)
 
   const [activeEditorTab, setActiveEditorTab] = useState('')
-  const [activeFilterTab, setActiveFilterTab] = useState({
+
+  const [activeFilterTab, setActiveFilterTab] = useState<any>({
     logoShirt: true,
     stylishShirt: false,
   })
@@ -34,14 +35,44 @@ const Customizer = () => {
       case 'colorpicker':
         return <ColorPicker />
       case 'filepicker':
-        return <FilePicker />
+        return <FilePicker file={file} setFile={setFile} />
       case 'aipicker':
         return <AIPicker />
       default:
         return null
     }
   }
+  // const handleDecals = (type: any, result: any) => {
+  //   const decalType = DecalTypes[type]
 
+  //   state[decalType.stateProperty] = result
+
+  //   if (!activeFilterTab[decalType.filterTab]) {
+  //     handleActiveFilterTab(decalType.filterTab)
+  //   }
+  // }
+
+  const _handleActiveFilterTab = (tabName: string) => {
+    switch (tabName) {
+      case 'logoShirt':
+        state.isLogoTexture = !activeFilterTab[tabName]
+        break
+      case 'stylishShirt':
+        state.isFullTexture = !activeFilterTab[tabName]
+        break
+      default:
+        state.isLogoTexture = true
+        state.isFullTexture = false
+        break
+    }
+
+    setActiveFilterTab((prevState: any) => {
+      return {
+        ...prevState,
+        [tabName]: !prevState[tabName],
+      }
+    })
+  }
   return (
     <AnimatePresence>
       {!snap.intro && (
@@ -54,9 +85,16 @@ const Customizer = () => {
             <div className='flex items-center min-h-dvh'>
               <div className='editortabs-container tabs'>
                 {EditorTabs.map((tab) => (
-                  <Tab key={tab.name} tab={tab} handleClick={() => {}} />
+                  <Tab
+                    key={tab.name}
+                    tab={tab}
+                    handleClick={() => {
+                      setActiveEditorTab(tab.name)
+                    }}
+                  />
                 ))}
               </div>
+              {genderateTabcontent()}
             </div>
           </motion.div>
           <motion.div className='absolute z-10 top-5 right-5' {...fadeAnimation}>
@@ -73,8 +111,8 @@ const Customizer = () => {
                 key={tab.name}
                 tab={tab}
                 isFilterTab
-                isActiveTab=''
-                handleClick={() => {}}
+                isActiveTab={activeFilterTab[tab.name]}
+                handleClick={() => _handleActiveFilterTab(tab.name)}
               />
             ))}
           </motion.div>

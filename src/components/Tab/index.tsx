@@ -6,8 +6,8 @@ import { useSnapshot } from 'valtio'
 
 type TTab = {
   tab: { name: string; icon: string }
-  isFilterTab: boolean
-  isActiveTab: boolean
+  isFilterTab?: boolean
+  isActiveTab?: any
   handleClick: any
 }
 
