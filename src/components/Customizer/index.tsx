@@ -11,6 +11,9 @@ import { fadeAnimation, slideAnimation } from '@/config/motion'
 import Tab from '../Tab'
 import { CustomButton } from '../CustomButton'
 import { useState } from 'react'
+import AIPicker from '../AIPicker'
+import FilePicker from '../FilePicker'
+import ColorPicker from '../ColorPicker'
 
 const Customizer = () => {
   const snap = useSnapshot(state)
@@ -26,7 +29,18 @@ const Customizer = () => {
     stylishShirt: false,
   })
 
-  const genderateTabcontent = () => {}
+  const genderateTabcontent = () => {
+    switch (activeEditorTab) {
+      case 'colorpicker':
+        return <ColorPicker />
+      case 'filepicker':
+        return <FilePicker />
+      case 'aipicker':
+        return <AIPicker />
+      default:
+        return null
+    }
+  }
 
   return (
     <AnimatePresence>
